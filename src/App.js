@@ -1,23 +1,54 @@
 import logo from './logo.svg';
 import './App.css';
+import "./flow/config";
+import { useState, useEffect } from "react";
+import * as fcl from "@onflow/fcl";
 
 function App() {
+  const [user, setUser] = useState({loggedIn: null})
+  const [name, setName] = useState('') // NEW
+  useEffect(() => fcl.currentUser.subscribe(setUser), [])
+  
+  const sendQuery = async () => {
+    const profile = await fcl.query({
+      cadence: `
+        import Profile from 0xProfile
+
+        pub fun main(address: Address): Profile.ReadOnly? {
+          return Profile.read(address)
+        }
+      `,
+      args: (arg, t) => [arg(user.addr, t.Address)]
+    })
+    setName(profile?.name ?? 'No Profile')
+  }
+
+  const AuthedState = () => {
+    return (
+      <div>
+        <div>Address: {user?.addr ?? "No Address"}</div>
+        <div>Profile Name: {name ?? "--"}</div> {/* NEW */}
+        <button onClick={sendQuery}>Send Query</button>
+        <button onClick={fcl.unauthenticate}>Log Out</button>
+      </div>
+    )
+  }
+
+  const UnauthenticatedState = () => {
+    return (
+      <div>
+        <button onClick={fcl.logIn}>Log In</button>
+        <button onClick={fcl.signUp}>Sign Up</button>
+      </div>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {user.loggedIn
+        ? <AuthedState />
+        : <UnauthenticatedState />
+      }
     </div>
   );
 }
