@@ -36,3 +36,49 @@
     transform: rotate(360deg);
   }
 }
+
+#spanNavbar {
+  font-size: 1.9rem;
+  color: white;
+}
+
+#navbar {
+  color: white;
+font-weight: bold;
+font-size: 1.5rem;
+width: 96rem;
+}
+
+.nav_menu > a:hover{
+  /* border-color: antiquewhite;
+  background-color: #61dafb; */
+  color: rgb(150, 150, 158)
+}
+
+#navbar > a {
+  
+}
+
+.navPack {
+  display: flex;
+justify-content: center;
+width: 283rem;
+}
+
+.nav_menu {
+  margin-left: 2rem;
+}
+
+#navbar > a:hover {
+  /* border-color: white; */
+  /* border-radius: 5px; */
+  /* filter: blur(10px); */
+}
+
+.login_buttons{
+  display: flex;
+  align-items: flex-end;
+  float: right;
+  width: 75rem;
+justify-content: flex-end;
+}
