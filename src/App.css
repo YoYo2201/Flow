@@ -69,10 +69,13 @@ width: 283rem;
   margin-left: 2rem;
 }
 
-#navbar > a:hover {
-  /* border-color: white; */
-  /* border-radius: 5px; */
-  /* filter: blur(10px); */
+.main_heading{
+  margin-top: 10rem;
+}
+
+.main_heading2{
+  margin-top:-2.9rem;
+  margin-left:5rem;
 }
 
 .login_buttons{
@@ -81,4 +84,8 @@ width: 283rem;
   float: right;
   width: 75rem;
 justify-content: flex-end;
+}
+
+.login_buttons{
+  /* font-family:  */
 }
