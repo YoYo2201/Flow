@@ -82,3 +82,25 @@ width: 283rem;
   width: 75rem;
 justify-content: flex-end;
 }
+
+.main_heading{
+  margin-top: 10rem;
+}
+
+.main_heading2{
+  margin-top:-2.9rem;
+  margin-left:5rem;
+}
+
+#signOutButton {
+  display: block;
+margin: auto;
+font-size: 16px;
+}
+
+#authentication-modal {
+  display: block;
+  width: 28rem;
+  margin: auto;
+  height: fit-content;
+}
