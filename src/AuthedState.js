@@ -1,14 +1,37 @@
 import React from 'react'
 import avatar from './images/avatar.png'
 import badge from './images/badges.webp'
+import * as fcl from "@onflow/fcl"
+import {useState, useEffect} from 'react';
+import * as t from "@onflow/types";
+import { getBalance } from './cadence/scripts/flow/get_balance';
 
 export default function AuthedState(props) {
+
+  // const [user, setUser] = useState();
+  const [balance, setbalance] = useState()
+  useEffect(() => {
+    get_balance()
+  }, [])
+  const get_balance = async () => {
+    const result = await fcl.send([
+        fcl.script(getBalance),
+        fcl.args([
+            fcl.arg(props.address, t.Address)
+        ])
+    ]).then(fcl.decode);
+
+    console.log(result);
+    setbalance(result);
+  }
+
+
   return (
     <div className='login_buttons'>
         <button id="badgeNameButton" class="flex items-center text-sm font-medium text-white-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
     <span class="sr-only">Open user menu</span>
     <img class="w-12 h-12 mr-2 rounded-full" src={badge} alt="baby with headphones"></img>
-    <p style={{marginRight: '2em'}}>570 COINS</p>
+    <p style={{marginRight: '2em'}}>{balance} 70 FLOW</p>
 </button>
       <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm font-medium text-white-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
     <span class="sr-only">Open user menu</span>

@@ -18,7 +18,7 @@ export default function NavBar(props) {
         </div>
         {/* <div className='nav_menu'><a href="#"></a></div> */}
         {props.loginState
-? <AuthedState fcl={props.fcl} name={props.name} navigator={props.navigator}/>
+? <AuthedState fcl={props.fcl} name={props.name} navigator={props.navigator} address = {props.user.addr}/>
 : <UnauthenticatedState login_page={props.login_page} fcl={props.fcl} setLoginState={props.setLoginState}/>
 }
       </div>
