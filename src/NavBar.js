@@ -8,7 +8,7 @@ export default function NavBar(props) {
     <nav className="sticky top-0 z-10 blur-objects backdrop-blur-md">
   <div className="max-w-5xl mx-auto px-4" style={{maxWidth: 'none'}}>
     <div className="flex items-center justify-between h-16">
-      <span className="text-2xl text-white-900 font-semibold" id='spanNavbar'>Logo</span>
+      <span className="text-2xl text-white-900 font-semibold" id='spanNavbar'>Charitablock</span>
       <div className="flex space-x-4 text-white-900" id='navbar'>
         <div className='navPack'>
         <div className='nav_menu'><Link to='/main'>HOME</Link></div>

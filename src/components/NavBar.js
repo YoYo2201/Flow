@@ -11,7 +11,7 @@ function Navbar(){
                 className="text-2xl text-white-900 font-semibold"
                 id="spanNavbar"
               >
-                Logo 
+                Charitablock
               </span>
               <div className="flex space-x-4 text-white-900" id="navbar">
                 <div className="navPack">
